@@ -34,11 +34,11 @@ public class EmployeeController {
     }
 
     @GetMapping("/{empId}")
-    public ResponseEntity<EmployeeDto> getEmployee(@PathVariable("empId") UUID empId){
+    public ResponseEntity<EmployeeDto> getEmployee(@PathVariable("empId") UUID empId) throws SecurityException{
         return new ResponseEntity<EmployeeDto>(employeeService.getEmployeeByID(empId), HttpStatus.OK);
     }
     @PostMapping
-    public ResponseEntity handlePost(@RequestBody @Valid EmployeeDto employeeDto,@RequestParam String fileType) throws NoSuchPaddingException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, IllegalBlockSizeException, InvalidProtocolBufferException, BadPaddingException, InvalidKeyException, InvalidKeySpecException {
+    public ResponseEntity handlePost(@RequestBody @Valid EmployeeDto employeeDto,@RequestParam String fileType) throws SecurityException {
         HttpHeaders header = new HttpHeaders();
         if(EmployeeConstants.ALLOWED_FILE_TYPES.contains(fileType)){
         String employeeId = employeeService.saveEmployee(employeeDto,fileType);
@@ -50,7 +50,7 @@ public class EmployeeController {
     }
 
     @PutMapping
-        public ResponseEntity handlePut(@RequestBody @Valid EmployeeDto employeeDto,@RequestParam String fileType, @RequestParam String employeeId){
+        public ResponseEntity handlePut(@RequestBody @Valid EmployeeDto employeeDto,@RequestParam String fileType, @RequestParam String employeeId) throws SecurityException{
         HttpHeaders header = new HttpHeaders();
         if(EmployeeConstants.ALLOWED_FILE_TYPES.contains(fileType)){
             String empId = employeeService.editEmployee(employeeDto,fileType,employeeId);
@@ -58,7 +58,7 @@ public class EmployeeController {
         }else{
             throw new UnsupportedOperationException();
         }
-        return new ResponseEntity(header,HttpStatus.CREATED);
+        return new ResponseEntity(header,HttpStatus.OK);
     }
 
 }

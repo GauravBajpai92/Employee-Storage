@@ -13,8 +13,8 @@ import java.security.spec.InvalidKeySpecException;
 import java.util.UUID;
 
 public interface EmployeeService {
-    EmployeeDto getEmployeeByID(UUID empId);
-    String saveEmployee(EmployeeDto employeeDto, String fileType) throws NoSuchPaddingException, InvalidKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeySpecException, InvalidProtocolBufferException;
+    EmployeeDto getEmployeeByID(UUID empId) throws SecurityException;
+    String saveEmployee(EmployeeDto employeeDto, String fileType) throws SecurityException;
 
-    String editEmployee(EmployeeDto employeeDto, String fileType, String employeeId);
+    String editEmployee(EmployeeDto employeeDto, String fileType, String employeeId) throws SecurityException;
 }
