@@ -4,9 +4,7 @@
 Service is used to get employee data from user it validates the data and sends it to the Storage service to store it. 
 This service has 3 end points for POST, PUT and GET employee data.
 
-It sends PUT and POST Messages are send through Active MQ message queues.
-
-It sends to Artemis ActiveMQ broker messages.
+PUT and POST Messages are send through Active MQ message queues.
 
 vromero/activemq-artemis Docker image is used (https://hub.docker.com/r/vromero/activemq-artemis) for Active MQ.
 Note: This is a Linux image and will not run on Windows container. Please switch to Linux docker container.
