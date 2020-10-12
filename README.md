@@ -53,4 +53,4 @@ Sample output:
     "age": 19
 }
 
-For Security AES encryption is used, shared key between Employee Storage and Storage Service is used to encrypt and decrypt messages.
+For Security AES encryption is used, shared key between Employee Storage and Storage Service is used to encrypt and decrypt messages. We have used the application property to save the secure key for ease purpose but ideally we will pick up the secure key from env varriable.
